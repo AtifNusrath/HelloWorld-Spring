@@ -5,16 +5,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import com.example.demo.component.DemoBean;
 import com.example.demo.controller.HelloRestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @SpringBootApplication
 public class NewHelloApplication {
+    public static final Logger logger = LoggerFactory.getLogger(NewHelloApplication.class);
+
 
 	public static void main(String[] args) {
-		System.out.println("Hello from Bridgelabz ");
-		ApplicationContext context = SpringApplication.run(NewHelloApplication.class, args);
+		logger.debug("Hello from Bridgelabz");
+    
+        ApplicationContext context = SpringApplication.run(NewHelloApplication.class, args);
         DemoBean demoBean = context.getBean(DemoBean.class);
-        System.out.println("Demo Bean = " + demoBean.toString());
+        logger.info("Demo Bean = " + demoBean.toString());
         System.out.println(context.getBean(HelloRestController.class));
 	}
 
